@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+   
+
+}
+
+
+@section content_wrapper {
+    <div>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Ques No</th>
+                    <th></th>
+                    <th></th>
+                    <th>Question</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Answer</th>
+
+                </tr>
+
+            </thead>
+
+
+
+            <tbody>
+
+
+
+
+                @{int i = 1;}
+
+                @foreach (var item in ViewData["jointables"] as IEnumerable<OnlineQuizSystem.ViewModel.anstextViewModel>)
+                {
+
+
+                <tr>
+
+                    <td>
+                        <span>@(i++)</span>
+                    </td>
+
+                    <td></td>
+                    <td></td>
+
+                    <td>@item.questionText</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@item.answerText</td>
+
+
+
+                </tr>
+
+
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+    }

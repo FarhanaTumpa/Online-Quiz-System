@@ -1,0 +1,47 @@
+﻿@model OnlineQuizSystem.Models.Category
+@{
+    ViewBag.Title = "ShowResultToTeacher";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+   
+}
+
+
+@section content_wrapper {
+    <div >
+        <table class="table table-responsive" >
+            <thead>
+                <tr>
+                    <th >Question Sets</th>
+
+                </tr>
+
+            </thead>
+
+
+
+            <tbody>
+                @foreach (var item in ViewData["list"] as List<OnlineQuizSystem.Models.Category>)
+                {
+
+
+                    <tr>
+
+
+                        <td>@Html.ActionLink(item.CategoryName, "Showresultstudentid", new { id = item.CategoryId })</td>
+
+
+
+                    </tr>
+
+                }
+            </tbody>
+
+
+
+
+        </table>
+
+    </div>
+
+    }
+    

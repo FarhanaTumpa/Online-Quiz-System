@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "New Request";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+  
+}
+
+
+
+@section content_wrapper {
+    <div class="container">
+
+
+   
+
+        <h6 style="color:#42c97b;">@TempData["msg"]</h6>
+
+
+        <div >
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th></th>
+                        <th></th>
+                     
+                 
+
+
+                        <th>Student Name</th>
+                        <th></th>
+                        <th></th>
+               
+
+                        <th>  Add Request</th>
+                        <th></th>
+                        <th></th>
+                  
+
+                        <th>  Delete Request</th>
+
+                    </tr>
+
+                </thead>
+
+
+
+
+                <tbody>
+
+
+                    @foreach (var item in ViewData["jointables"] as IEnumerable<OnlineQuizSystem.Models.AcceptStudentRequestClass>)
+                    {
+                    <tr>
+
+
+
+                        <td> @item.friendrequest.studentid </td>
+                        <td></td>
+                        <td></td>
+
+                        <td>@Html.ActionLink(item.addfriend.StudentName, "Studentprofileforteacher", new { id = item.addfriend.StudentName })</td>
+                        <td></td>
+                        <td></td>
+                 
+                        <td>
+
+                            @using (Html.BeginForm("StudentRequestNotifictionForTeacheraccept", "Request", FormMethod.Post))
+
+                            {
+                                <input type="hidden" value="@item.friendrequest.studentid" name="sid" />
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <button type="submit" class="btn btn-dark" style="background-color:forestgreen" value="1" name="accept">Accept</button>
+                            }
+                        </td>
+                        <td></td>
+                        <td></td>
+                      
+                        <td>
+                            @using (Html.BeginForm("StudentRequestNotifictionForTeacher", "Request", FormMethod.Post))
+
+                            {
+
+                                <input type="hidden" value="@item.friendrequest.studentid" name="sid" />
+                                <span class="glyphicon glyphicon-trash"></span>
+                                <button type="submit" class="btn btn-dark" style="background-color:#e03d3d" value="1" name="delete">Delete</button>
+                            }
+                        </td>
+
+
+
+
+
+
+                    </tr>
+                    }
+
+                </tbody>
+
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+}

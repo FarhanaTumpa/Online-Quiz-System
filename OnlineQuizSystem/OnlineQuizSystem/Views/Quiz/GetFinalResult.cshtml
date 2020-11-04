@@ -1,0 +1,86 @@
+﻿@model IEnumerable<OnlineQuizSystem.ViewModel.ResultModel>
+@{
+    ViewBag.Title = "Final Result";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+
+}
+
+<script type="text/javascript">
+
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+
+    window.onbeforeunload = function () { return "Your work will be lost."; };
+</script>
+
+
+
+
+
+
+
+@section content_wrapper {
+
+
+    <div class="container my-5">
+        <table style="width:100%" class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>
+                        Question
+                    </td>
+                    <td>
+                        Answer
+                    </td>
+                    <td>
+                        Answer by Student
+                    </td>
+                    <td>
+                        Status
+                    </td>
+                </tr>
+            </thead>
+
+            @{int a = 0; }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Question
+                    </td>
+                    <td>
+                        @item.Answer
+                    </td>
+                    <td>
+                        @item.AnswerByStudent
+                    </td>
+                    <td>
+                        @if (item.Status == "Correct")
+                        {
+                            a++;
+                            <label style="color: green"> @item.Status</label>
+                        }
+                        else
+                        {
+                            <label style="color: red"> @item.Status</label>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="container my-5" style="float:right">
+       
+        <h2 style="color: red">
+            <b>  Score : @a </b>
+        </h2>
+        
+        @*<label style="color: red">@a</label>*@
+
+    }
+
+
+    </div>

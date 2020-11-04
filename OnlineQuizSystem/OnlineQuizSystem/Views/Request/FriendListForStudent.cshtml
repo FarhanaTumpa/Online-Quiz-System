@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Teacher List";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    
+}
+
+@*@section user_name {
+    @CurrentUser.Email
+}*@
+
+@section content_wrapper {
+    <div class="container">
+
+
+
+        <h6 style="color:#e03d3d">@TempData["msg"]</h6>
+
+        <div >
+
+            <table class="table table-responsive">
+
+                <thead>
+                    <tr>
+                        <th>Teacher ID</th>
+
+                        <th></th>
+                        <th></th>
+
+                        <th>Teacher Name</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>ADD</th>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewData["jointabless"] as IEnumerable<OnlineQuizSystem.Models.friendlistforstudent>)
+                    {
+                    <tr>
+                        <td> @item.friendlist.teacherid </td>
+                        <td></td>
+                        <td></td>
+                        <td>@Html.ActionLink(item.teacherlist.TeacherName, "Teacherprofileforstudent", new { id = item.teacherlist.TeacherName })</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+            
+                        <td>
+                            @using (Html.BeginForm("deletefrndforstudent", "Request", FormMethod.Post))
+
+                            {
+
+                                <input type="hidden" value="@item.friendlist.teacherid" name="tid" />
+                                <span class="glyphicon glyphicon-trash"></span>
+                                <button class=" btn btn-dark" style="background-color:#e03d3d" type="submit" value="1" name="delete">Delete</button>
+                            }
+                        </td>
+
+
+                    </tr>
+
+                    }
+                </tbody>
+
+
+            </table>
+
+
+
+        </div>
+
+    </div>
+    }

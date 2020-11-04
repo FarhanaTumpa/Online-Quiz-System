@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Question";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+   
+}
+
+
+
+
+@section content_wrapper {
+
+    <div class="container">
+
+
+
+        <div >
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>No</th>
+
+
+                        <th>Question</th>
+
+                        <th>Answer</th>
+
+                        <th>Delete</th>
+
+                    </tr>
+
+                </thead>
+
+
+
+
+                <tbody>
+
+
+
+
+                    @{int i = 1;}
+
+                    @foreach (var item in ViewData["jointables"] as IEnumerable<OnlineQuizSystem.ViewModel.anstextViewModel>)
+                    {
+
+
+                    <tr>
+
+                        <td>
+                            <span>@(i++)</span>
+                        </td>
+
+                 
+
+                        @using (Html.BeginForm("deleteques", "ViewQuestions", FormMethod.Post))
+                        {
+
+                            <input type="hidden" value="@item.questionId" name="qid" />
+                            <td>@item.questionText</td>
+
+
+
+                            <td>@item.answerText</td>
+
+                            <td> <button type="submit" class="btn btn-icon-split" style="background-color:#e03d3d;color:white" value="1" name="delete">Delete</button></td>
+
+
+                        }
+
+                    </tr>
+
+
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+    }
